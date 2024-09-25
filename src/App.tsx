@@ -5,6 +5,7 @@ import Login from './pages/Login';
 import RegisterAttendants from './pages/RegisterAttendants'; // Supondo que você tenha uma página de cadastro
 import Home from './pages/Home';
 import PrivateRoutes from './routes/PrivateRoute';
+import MainLayout from './components/MainLayout'; // Importando o MainLayout
 
 const App: React.FC = () => {
   return (
@@ -18,10 +19,9 @@ const App: React.FC = () => {
 
         {/* Rotas protegidas pelo PrivateRoutes */}
         <Route element={<PrivateRoutes />}>
-          {/* Defina aqui todas as rotas que precisam ser protegidas */}
-          <Route path="/home" element={<Home />} />
-          {/* Adicione outras rotas protegidas aqui */}
-          
+          <Route element={<MainLayout />}> {/* Adicionando o MainLayout aqui */}
+            <Route path="/home" element={<Home />} />
+          </Route>
         </Route>
       </Routes>
     </Router>
